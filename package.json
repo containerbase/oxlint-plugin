@@ -40,7 +40,7 @@
     "@oxlint/plugins": "1.86.0"
   },
   "devDependencies": {
-    "@semantic-release/exec": "7.1.0",
+    "@containerbase/semantic-release-pnpm": "1.4.3",
     "@tsconfig/node24": "24.0.5",
     "@tsconfig/strictest": "2.0.8",
     "@types/common-tags": "1.8.4",
