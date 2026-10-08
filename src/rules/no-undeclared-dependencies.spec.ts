@@ -11,10 +11,7 @@ const ruleTester = new RuleTester({
 });
 
 // the rule reads the nearest package.json above the linted file
-const filename = join(
-  import.meta.dirname,
-  '__fixtures__/no-undeclared-dependencies/src/file.ts',
-);
+const filename = join(import.meta.dirname, '__fixtures__/no-undeclared-dependencies/src/file.ts');
 
 ruleTester.run('no-undeclared-dependencies', rule, {
   valid: [
@@ -49,9 +46,7 @@ ruleTester.run('no-undeclared-dependencies', rule, {
     {
       code: `import a from '@scope/undeclared/sub';`,
       filename,
-      errors: [
-        { messageId: 'undeclared', data: { name: '@scope/undeclared' } },
-      ],
+      errors: [{ messageId: 'undeclared', data: { name: '@scope/undeclared' } }],
     },
     {
       code: `import a from 'dev-dep';`,

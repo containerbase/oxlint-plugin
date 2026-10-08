@@ -35,7 +35,7 @@ jobs:
       - name: lint
         run: |
           pnpm oxlint --format github
-          pnpm prettier
+          pnpm oxfmt
           pnpm lint:types
 
   test:
