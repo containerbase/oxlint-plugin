@@ -35,10 +35,7 @@ function groupRank(source: string): number {
  * @param b the second import
  * @returns a negative number when `a` comes first
  */
-function compareImports(
-  a: ESTree.ImportDeclaration,
-  b: ESTree.ImportDeclaration,
-): number {
+function compareImports(a: ESTree.ImportDeclaration, b: ESTree.ImportDeclaration): number {
   const rank = groupRank(a.source.value) - groupRank(b.source.value);
   if (rank !== 0) {
     return rank;
@@ -56,16 +53,11 @@ function compareImports(
  * @param body the program body
  * @returns the runs with more than one import
  */
-function importRuns(
-  body: ESTree.Program['body'],
-): ESTree.ImportDeclaration[][] {
+function importRuns(body: ESTree.Program['body']): ESTree.ImportDeclaration[][] {
   const runs: ESTree.ImportDeclaration[][] = [];
   let run: ESTree.ImportDeclaration[] = [];
   for (const statement of body) {
-    if (
-      statement.type === 'ImportDeclaration' &&
-      statement.specifiers.length > 0
-    ) {
+    if (statement.type === 'ImportDeclaration' && statement.specifiers.length > 0) {
       run.push(statement);
       continue;
     }

@@ -35,9 +35,7 @@ ruleTester.run('test-root-describe', rule, {
       code: `describe('other', () => {});`,
       filename,
       output: `describe('cli/utils/file', () => {});`,
-      errors: [
-        { messageId: 'wrongName', data: { testName: 'cli/utils/file' } },
-      ],
+      errors: [{ messageId: 'wrongName', data: { testName: 'cli/utils/file' } }],
     },
     {
       code: 'describe(`cli/utils/file`, () => {});',
