@@ -1,0 +1,90 @@
+{
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/github",
+      {
+        "releasedLabels": false,
+        "successCommentCondition": false
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "pnpm version ${nextRelease.version} --git-tag-version=false",
+        "publishCmd": "pnpm publish --no-git-checks"
+      }
+    ]
+  ],
+  "analyzeCommits": {
+    "releaseRules": [
+      {
+        "type": "docs",
+        "scope": "readme.md",
+        "release": "patch"
+      },
+      {
+        "type": "build",
+        "release": "patch"
+      }
+    ]
+  },
+  "preset": "conventionalcommits",
+  "presetConfig": {
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "perf",
+        "section": "Performance Improvements"
+      },
+      {
+        "type": "revert",
+        "section": "Reverts"
+      },
+      {
+        "type": "docs",
+        "section": "Documentation"
+      },
+      {
+        "type": "style",
+        "section": "Styles"
+      },
+      {
+        "type": "refactor",
+        "section": "Code Refactoring"
+      },
+      {
+        "type": "test",
+        "section": "Tests"
+      },
+      {
+        "type": "build",
+        "section": "Build System"
+      },
+      {
+        "type": "ci",
+        "section": "Continuous Integration"
+      },
+      {
+        "type": "chore",
+        "section": "Miscellaneous Chores"
+      }
+    ]
+  },
+  "tagFormat": "${version}",
+  "branches": [
+    {
+      "name": "maint/+([0-9])?(.{+([0-9]),x}).x",
+      "range": "${name.replace(/^maint\\//g, '')}"
+    },
+    "main"
+  ]
+}
