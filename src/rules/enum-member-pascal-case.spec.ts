@@ -27,15 +27,11 @@ ruleTester.run('enum-member-pascal-case', rule, {
     },
     {
       code: `enum Color { DARK_BLUE }`,
-      errors: [
-        { messageId: 'enumMemberPascalCase', data: { name: 'DARK_BLUE' } },
-      ],
+      errors: [{ messageId: 'enumMemberPascalCase', data: { name: 'DARK_BLUE' } }],
     },
     {
       code: `enum Quoted { 'some-value' = 1 }`,
-      errors: [
-        { messageId: 'enumMemberPascalCase', data: { name: 'some-value' } },
-      ],
+      errors: [{ messageId: 'enumMemberPascalCase', data: { name: 'some-value' } }],
     },
   ],
 });

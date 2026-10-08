@@ -1,13 +1,6 @@
 import { type Context, type ESTree, defineRule } from '@oxlint/plugins';
 
-const viMethods = new Set([
-  'mock',
-  'doMock',
-  'unmock',
-  'doUnmock',
-  'importActual',
-  'importMock',
-]);
+const viMethods = new Set(['mock', 'doMock', 'unmock', 'doUnmock', 'importActual', 'importMock']);
 
 /**
  * Checks whether a module specifier points to a local file.
@@ -49,10 +42,7 @@ function reportJsExtension(context: Context, node: ESTree.StringLiteral): void {
  * @param context the rule context
  * @param node the module specifier literal
  */
-function checkSource(
-  context: Context,
-  node: ESTree.StringLiteral | null | undefined,
-): void {
+function checkSource(context: Context, node: ESTree.StringLiteral | null | undefined): void {
   if (node && isLocalPath(node.value) && node.value.endsWith('.js')) {
     reportJsExtension(context, node);
   }
@@ -83,10 +73,7 @@ export default defineRule({
         checkSource(context, node.source);
       },
       ImportExpression(node) {
-        if (
-          node.source.type === 'Literal' &&
-          typeof node.source.value === 'string'
-        ) {
+        if (node.source.type === 'Literal' && typeof node.source.value === 'string') {
           checkSource(context, node.source);
         }
       },
@@ -102,11 +89,7 @@ export default defineRule({
           return;
         }
         const [arg] = node.arguments;
-        if (
-          arg?.type !== 'Literal' ||
-          typeof arg.value !== 'string' ||
-          !isLocalPath(arg.value)
-        ) {
+        if (arg?.type !== 'Literal' || typeof arg.value !== 'string' || !isLocalPath(arg.value)) {
           return;
         }
         if (arg.value.endsWith('.js')) {

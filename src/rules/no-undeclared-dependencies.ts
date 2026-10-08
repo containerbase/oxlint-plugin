@@ -57,11 +57,7 @@ function findDependencies(dir: string): DeclaredDependencies | null {
  * specifiers
  */
 function packageName(source: string): string | undefined {
-  if (
-    source.startsWith('node:') ||
-    builtins.has(source) ||
-    !/^[@a-z0-9]/i.test(source)
-  ) {
+  if (source.startsWith('node:') || builtins.has(source) || !/^[@a-z0-9]/i.test(source)) {
     return undefined;
   }
   const parts = source.split('/');
@@ -72,10 +68,8 @@ export default defineRule({
   meta: {
     type: 'problem',
     messages: {
-      undeclared:
-        "'{{name}}' is not declared in the dependencies of package.json.",
-      devOnly:
-        "'{{name}}' is a devDependency, but this file may only use dependencies.",
+      undeclared: "'{{name}}' is not declared in the dependencies of package.json.",
+      devOnly: "'{{name}}' is a devDependency, but this file may only use dependencies.",
     },
     schema: [
       {
@@ -101,8 +95,7 @@ export default defineRule({
       if (!declared || declared.runtime.has(name)) {
         return;
       }
-      const options = context.options[0] as
-        { allowDevDependencies?: boolean } | undefined;
+      const options = context.options[0] as { allowDevDependencies?: boolean } | undefined;
       if (declared.dev.has(name)) {
         if (!options?.allowDevDependencies) {
           context.report({ node, messageId: 'devOnly', data: { name } });
@@ -129,10 +122,7 @@ export default defineRule({
         }
       },
       ImportExpression(node) {
-        if (
-          node.source.type === 'Literal' &&
-          typeof node.source.value === 'string'
-        ) {
+        if (node.source.type === 'Literal' && typeof node.source.value === 'string') {
           check(node.source);
         }
       },
