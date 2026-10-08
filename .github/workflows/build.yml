@@ -13,6 +13,9 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  DRY_RUN: ${{ github.ref_name != github.event.repository.default_branch && !startsWith(github.ref_name, 'maint/') }}
+
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -52,3 +55,39 @@ jobs:
         run: |
           pnpm test
           pnpm build
+
+  release:
+    needs:
+      - lint
+      - test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write
+      issues: write
+      id-token: write
+
+    steps:
+      # full checkout for semantic-release
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          show-progress: false
+          filter: blob:none # we don't need all blobs
+
+      - uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+
+      - name: ⚙️ Setup
+        uses: containerbase/internal-tools/setup@d7fbd383dbf6cddf7e6bb2d787342a7f1cb92620 # v5.0.54
+        with:
+          checkout: false
+
+      # Ensure npm 11.5.1 or later for trusted publishing
+      - run: npm install -g npm@latest
+
+      - name: semantic-release
+        if: github.event_name == 'push'
+        run: pnpm semantic-release --dry-run ${{env.DRY_RUN}} --ci ${{env.DRY_RUN != 'true'}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
