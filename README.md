@@ -27,11 +27,12 @@
 
 ## Development
 
-Node.js, pnpm, jactionlint, shellcheck and zizmor are pinned in [`mise.toml`](./mise.toml), so [`mise`](https://mise.jdx.dev) installs them and the dependencies with `mise install`.
-Without mise, install the dependencies with `pnpm install`.
+Node.js, pnpm, jactionlint, shellcheck and zizmor are pinned in [`mise.toml`](./mise.toml), so [`mise`](https://mise.jdx.dev) installs them with `mise install`, then `pnpm install --frozen-lockfile` installs the dependencies.
+Without mise, install Node.js and pnpm yourself and run only `pnpm install --frozen-lockfile`.
 
 ```bash
 mise install
+pnpm install --frozen-lockfile
 pnpm lint
 pnpm test
 pnpm build
