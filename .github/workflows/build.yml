@@ -19,6 +19,7 @@ env:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: ⚙️ Setup
         uses: containerbase/internal-tools/setup@c0edd0d701889647e47d726641bcba2a6d92eabe # v5.3.6
@@ -74,9 +75,10 @@ jobs:
       id-token: write
 
     steps:
-      # full checkout for semantic-release
+      # full checkout for semantic-release, which pushes with its own token
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
           show-progress: false
           filter: blob:none # we don't need all blobs
