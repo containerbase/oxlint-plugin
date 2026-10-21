@@ -27,7 +27,7 @@
 
 ## Development
 
-Node.js, pnpm and jactionlint are pinned in [`mise.toml`](./mise.toml), so [`mise`](https://mise.jdx.dev) installs them and the dependencies with `mise install`.
+Node.js, pnpm, jactionlint, shellcheck and zizmor are pinned in [`mise.toml`](./mise.toml), so [`mise`](https://mise.jdx.dev) installs them and the dependencies with `mise install`.
 Without mise, install the dependencies with `pnpm install`.
 
 ```bash
@@ -36,8 +36,9 @@ pnpm lint
 pnpm test
 pnpm build
 jactionlint
+zizmor .github/
 ```
 
 - `pnpm lint-fix` fixes the formatting and the fixable lint findings.
 - `pnpm build` compiles the plugin to `dist/`, which is what the package ships.
-- `jactionlint` checks the GitHub workflows.
+- `jactionlint` checks the GitHub workflows and `zizmor .github/` audits them. CI runs both through mise in the `lint` job.
