@@ -1,5 +1,6 @@
 import { RuleTester } from 'oxlint/plugins-dev';
 import { describe, test } from 'vitest';
+
 import rule from './test-root-describe.ts';
 
 RuleTester.describe = describe;

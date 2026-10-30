@@ -1,5 +1,6 @@
 import { builtinModules } from 'node:module';
-import { type ESTree, defineRule } from '@oxlint/plugins';
+
+import { defineRule, type ESTree } from '@oxlint/plugins';
 
 const builtins = new Set(builtinModules);
 

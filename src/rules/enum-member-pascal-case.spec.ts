@@ -1,5 +1,6 @@
 import { RuleTester } from 'oxlint/plugins-dev';
 import { describe, test } from 'vitest';
+
 import rule from './enum-member-pascal-case.ts';
 
 RuleTester.describe = describe;
