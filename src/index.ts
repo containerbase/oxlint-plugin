@@ -1,4 +1,5 @@
 import { definePlugin } from '@oxlint/plugins';
+
 import enforceTsExtension from './rules/enforce-ts-extension.ts';
 import enumMemberPascalCase from './rules/enum-member-pascal-case.ts';
 import noUndeclaredDependencies from './rules/no-undeclared-dependencies.ts';

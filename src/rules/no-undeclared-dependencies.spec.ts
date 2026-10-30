@@ -1,6 +1,8 @@
 import { join } from 'node:path';
+
 import { RuleTester } from 'oxlint/plugins-dev';
 import { describe, test } from 'vitest';
+
 import rule from './no-undeclared-dependencies.ts';
 
 RuleTester.describe = describe;

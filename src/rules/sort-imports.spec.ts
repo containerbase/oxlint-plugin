@@ -1,6 +1,7 @@
 import { codeBlock } from 'common-tags';
 import { RuleTester } from 'oxlint/plugins-dev';
 import { describe, test } from 'vitest';
+
 import rule from './sort-imports.ts';
 
 RuleTester.describe = describe;

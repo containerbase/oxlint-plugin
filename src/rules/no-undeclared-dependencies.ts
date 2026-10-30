@@ -1,7 +1,8 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { builtinModules } from 'node:module';
 import { dirname, join } from 'node:path';
-import { type ESTree, defineRule } from '@oxlint/plugins';
+
+import { defineRule, type ESTree } from '@oxlint/plugins';
 
 const builtins = new Set(builtinModules);
 

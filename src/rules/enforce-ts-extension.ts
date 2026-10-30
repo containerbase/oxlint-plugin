@@ -1,4 +1,4 @@
-import { type Context, type ESTree, defineRule } from '@oxlint/plugins';
+import { type Context, defineRule, type ESTree } from '@oxlint/plugins';
 
 const viMethods = new Set(['mock', 'doMock', 'unmock', 'doUnmock', 'importActual', 'importMock']);
 
