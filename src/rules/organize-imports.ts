@@ -87,6 +87,21 @@ export default defineRule({
   meta: {
     type: 'suggestion',
     fixable: 'code',
+    deprecated: {
+      message:
+        "Use oxfmt's `sortImports` option to order the import statements and `containerbase/sort-imports` to sort the named imports.",
+      replacedBy: [
+        {
+          message: 'Orders the import statements.',
+          plugin: { name: 'oxfmt' },
+          rule: { name: 'sortImports' },
+        },
+        {
+          message: 'Sorts the named imports.',
+          rule: { name: 'sort-imports' },
+        },
+      ],
+    },
     messages: {
       unsorted:
         "Import of '{{source}}' is out of order, imports are grouped by builtin, external, parent, sibling and index modules and sorted alphabetically.",

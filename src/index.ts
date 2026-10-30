@@ -3,6 +3,7 @@ import enforceTsExtension from './rules/enforce-ts-extension.ts';
 import enumMemberPascalCase from './rules/enum-member-pascal-case.ts';
 import noUndeclaredDependencies from './rules/no-undeclared-dependencies.ts';
 import organizeImports from './rules/organize-imports.ts';
+import sortImports from './rules/sort-imports.ts';
 import testRootDescribe from './rules/test-root-describe.ts';
 
 export default definePlugin({
@@ -14,6 +15,7 @@ export default definePlugin({
     'enum-member-pascal-case': enumMemberPascalCase,
     'no-undeclared-dependencies': noUndeclaredDependencies,
     'organize-imports': organizeImports,
+    'sort-imports': sortImports,
     'test-root-describe': testRootDescribe,
   },
 });
