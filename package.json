@@ -37,7 +37,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@oxlint/plugins": "1.90.0"
+    "@oxlint/plugins": "^1.86.0"
   },
   "devDependencies": {
     "@containerbase/semantic-release-pnpm": "1.4.3",
