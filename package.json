@@ -42,7 +42,7 @@
   "devDependencies": {
     "@containerbase/semantic-release-pnpm": "1.4.4",
     "@tsconfig/node24": "24.0.5",
-    "@tsconfig/strictest": "2.0.8",
+    "@tsconfig/strictest": "2.0.9",
     "@types/common-tags": "1.8.4",
     "@types/node": "24.19.2",
     "common-tags": "1.8.2",
