@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: ⚙️ Setup
-        uses: containerbase/internal-tools/setup@c550d0fcc136e1558a3531f7f5348cca37304913 # v5.4.19
+        uses: containerbase/internal-tools/setup@453ab61dc2f48684340152808a57539b84961744 # v5.5.0
         with:
           save-cache: true
 
@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: ⚙️ Setup
-        uses: containerbase/internal-tools/setup@c550d0fcc136e1558a3531f7f5348cca37304913 # v5.4.19
+        uses: containerbase/internal-tools/setup@453ab61dc2f48684340152808a57539b84961744 # v5.5.0
 
       - name: lint
         run: |
@@ -67,7 +67,7 @@ jobs:
 
     steps:
       - name: ⚙️ Setup
-        uses: containerbase/internal-tools/setup@c550d0fcc136e1558a3531f7f5348cca37304913 # v5.4.19
+        uses: containerbase/internal-tools/setup@453ab61dc2f48684340152808a57539b84961744 # v5.5.0
 
       - name: test
         run: |
@@ -98,7 +98,7 @@ jobs:
       - uses: sigstore/cosign-installer@881c63bd87e38389154debd8331404ce7ca8a3ab # v4.1.4
 
       - name: ⚙️ Setup
-        uses: containerbase/internal-tools/setup@c550d0fcc136e1558a3531f7f5348cca37304913 # v5.4.19
+        uses: containerbase/internal-tools/setup@453ab61dc2f48684340152808a57539b84961744 # v5.5.0
         with:
           checkout: false
 
